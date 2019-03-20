@@ -5,7 +5,7 @@ import { observer, inject } from '@tarojs/mobx'
 import './index.scss'
 
 
-@inject('counterStore')
+@inject('commonStore')
 @observer
 class Index extends Component {
 
@@ -28,31 +28,26 @@ class Index extends Component {
   componentDidHide () { }
 
   increment = () => {
-    const { counterStore } = this.props
-    counterStore.increment()
+    const { commonStore } = this.props
+    commonStore.increment()
+    console.log(commonStore)
   }
 
   decrement = () => {
-    const { counterStore } = this.props
-    counterStore.decrement()
-  }
-
-  incrementAsync = () => {
-    const { counterStore } = this.props
-    counterStore.incrementAsync()
+    const { commonStore } = this.props
+    commonStore.decrement()
   }
 
   render () {
-    const { counterStore: { counter } } = this.props
+    const { commonStore: { counter } } = this.props
     return (
       <View className='index'>
         <Button onClick={this.increment}>+</Button>
         <Button onClick={this.decrement}>-</Button>
-        <Button onClick={this.incrementAsync}>Add Async</Button>
         <Text>{counter}</Text>
       </View>
     )
   }
 }
 
-export default Index 
+export default Index
