@@ -2,13 +2,14 @@
 	"miniprogramRoot": "dist/",
 	"projectname": "Game-Guides-Client",
 	"description": "b",
-	"appid": "touristappid",
+	"appid": "wx23d7cbeded432154",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": false,
 		"postcss": false,
 		"minified": false,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"condition": {}

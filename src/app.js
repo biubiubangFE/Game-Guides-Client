@@ -1,8 +1,7 @@
 import Taro, {Component} from "@tarojs/taro"
 import {Provider} from "@tarojs/mobx"
-import Index from "./pages/index"
+import Index from "./pages/home/index"
 
-import counterStore from "./store/counter"
 import stores from "./store/index";
 
 import "./app.scss"
@@ -13,23 +12,33 @@ import "./app.scss"
 //   require('nerv-devtools')
 // }
 
-// const store = {
-//   counterStore
-// }
-console.log("stores", stores)
-// console.log("store", store)
-
 class App extends Component {
 
   config = {
     pages: [
-      "pages/index/index"
+      "pages/home/index"
     ],
     window: {
       backgroundTextStyle: "light",
-      navigationBarBackgroundColor: "#fff",
-      navigationBarTitleText: "WeChat",
-      navigationBarTextStyle: "black"
+      navigationBarBackgroundColor: "#0d1e20",
+      navigationBarTextStyle: "white",
+      backgroundColor: "#0BAFC1"
+    },
+    tabBar: {
+      list: [
+        {
+          "pagePath": "pages/home/index",
+          "text": "首页"
+          // "iconPath": "assets/img/home.png",
+          // "selectedIconPath": "assets/img/home-active.png",
+        },
+        {
+          "pagePath": "pages/home/index",
+          "text": "游戏"
+          // "iconPath": "assets/img/home.png",
+          // "selectedIconPath": "assets/img/home-active.png",
+        }
+      ]
     }
   }
 

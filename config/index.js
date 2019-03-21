@@ -1,5 +1,5 @@
 const config = {
-  projectName: 'fff',
+  projectName: 'Game-Guides-Client',
   date: '2019-2-28',
   designWidth: 750,
   deviceRatio: {
