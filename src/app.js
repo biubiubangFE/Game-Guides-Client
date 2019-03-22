@@ -2,10 +2,10 @@ import Taro, {Component} from "@tarojs/taro"
 import {Provider} from "@tarojs/mobx"
 import Index from "./pages/home/index"
 
-import stores from "./store/index";
+import stores from "@/store/index";
 
 import "./app.scss"
-import "./assets/iconfont/iconfont.css"
+import "@/assets/iconfont/iconfont.css"
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
