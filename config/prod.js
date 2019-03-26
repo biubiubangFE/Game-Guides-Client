@@ -1,8 +1,15 @@
+const path = require('path');
 module.exports = {
   env: {
     NODE_ENV: '"production"'
   },
   defineConstants: {
+  },
+  alias: {
+    '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/assets': path.resolve(__dirname, '..', 'src/assets'),
+    '@/service': path.resolve(__dirname, '..', 'src/service'),
+    '@/store': path.resolve(__dirname, '..', 'src/store'),
   },
   weapp: {
     module: {
