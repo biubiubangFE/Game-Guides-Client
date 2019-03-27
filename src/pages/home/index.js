@@ -22,7 +22,8 @@ class Index extends Component {
       {title: "刀塔自走棋"},
       {title: "绝地求生"},
       {title: "主机游戏"}
-    ]
+    ],
+    current: 0
   }
 
   componentWillMount() {
@@ -56,13 +57,19 @@ class Index extends Component {
     commonStore.decrement()
   }
 
+  chooseTab(index) {
+    this.setState({
+      current: index
+    })
+  }
+
   render() {
     const {commonStore: {counter}} = this.props
-    const {tabHeads} = this.state
-    console.log(tabHeads)
+    const {tabHeads, current} = this.state
     return (
       <View className='home'>
-        <GGTabs tabHeads={tabHeads} current={1}></GGTabs>
+        <GGTabs tabHeads={tabHeads}
+                current={current} onClick={this.chooseTab.bind(this)}></GGTabs>
       </View>
     )
   }

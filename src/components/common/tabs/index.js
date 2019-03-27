@@ -6,6 +6,9 @@ import {View, Text} from "@tarojs/components"
 import classNames from "classnames"
 
 export default class GGTabs extends Component {
+  static options = {
+    addGlobalClass: true
+  }
   constructor() {
     super(...arguments)
   }
@@ -14,11 +17,16 @@ export default class GGTabs extends Component {
 
   }
 
+  handleClick(index) {
+    this.props.onClick(index)
+  }
+
   render() {
     const {
       className,
       tabHeads,
-      current
+      current,
+      headStyles
     } = this.props
 
     const bodyStyle = {}
@@ -29,11 +37,10 @@ export default class GGTabs extends Component {
     })
 
     const tabHead = tabHeads && tabHeads.map((item, idx) => {
-        console.log(typeof current)
         const itemCls = classNames({
           "tabs-head-item": true,
           "tabs-head-item-active": current === idx
-        })
+        }, headStyles)
         const itemClsLine = classNames({
           "tabs-head-item-box": true,
           "tabs-head-item-line-active": current === idx
