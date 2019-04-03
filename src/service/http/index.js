@@ -3,7 +3,6 @@
  */
 import Taro from "@tarojs/taro"
 
-const baseUrl = "https://mhdss.tangzhengxiong.com/dc-backend";
 /**
 * @author j_bleach 2019/3/21
 * @describe 拦截器
@@ -20,16 +19,16 @@ const interceptor = function (chain) {
     })
 }
 
-Taro.addInterceptor(interceptor)
+// Taro.addInterceptor(interceptor)
 
 const http = function (params = {}) {
   const {url, method = "GET", data, header = {}, success, fail, complete} = params
   Taro.request({
-    url: `${baseUrl}${url}`,
+    url,
     data,
     method,
     header: {
-      "content-type": "application/json",
+      "content-type": "application/x-www-form-urlencoded",
       ...header
     },
     success,

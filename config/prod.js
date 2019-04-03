@@ -10,6 +10,7 @@ module.exports = {
     '@/assets': path.resolve(__dirname, '..', 'src/assets'),
     '@/service': path.resolve(__dirname, '..', 'src/service'),
     '@/store': path.resolve(__dirname, '..', 'src/store'),
+    '@/config': path.resolve(__dirname, '..', 'src/config'),
   },
   weapp: {
     module: {
