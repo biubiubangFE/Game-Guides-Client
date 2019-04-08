@@ -14,7 +14,7 @@ import "./index.scss"
 
 @inject("commonStore")
 @observer
-@withLogin()
+@withLogin('didShow')
 class Index extends Component {
 
   config = {
@@ -38,13 +38,13 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.getList();
   }
 
   componentWillUnmount() {
   }
 
   componentDidShow() {
+    this.getList();
   }
 
   componentDidHide() {

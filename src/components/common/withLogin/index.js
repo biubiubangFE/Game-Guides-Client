@@ -39,7 +39,7 @@ function withLogin(lifecycle = 'willMount') {
             }
 
             async componentDidMount() {
-                if (super.componentWillMount) {
+                if (super.componentDidMount) {
                     if (lifecycle === LIFE_CYCLES[1]) {
                         const res = await this.$_autoLogin();
                         if (!res) return;
@@ -49,7 +49,7 @@ function withLogin(lifecycle = 'willMount') {
             }
 
             async componentDidShow() {
-                if (super.componentWillMount) {
+                if (super.componentDidShow) {
                     if (lifecycle === LIFE_CYCLES[2]) {
                         const res = await this.$_autoLogin();
                         if (!res) return;
@@ -92,7 +92,7 @@ function withLogin(lifecycle = 'willMount') {
                             }
                         })
                         if (mdhLogin.data.data) {
-                            Taro.setStorageSync('sessionKey', res.data.data.sessionKey)
+                            Taro.setStorageSync('sessionKey', mdhLogin.data.data.sessionKey)
                             return true;
                         } else {
                             console.log('登录失败！')
