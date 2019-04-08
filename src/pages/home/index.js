@@ -5,12 +5,14 @@ import Taro, {Component} from "@tarojs/taro"
 import {View} from "@tarojs/components"
 import {observer, inject} from "@tarojs/mobx"
 import GGTabs from "@/components/common/tabs"
+import withLogin from '@/components/common/withLogin';
 
 import "./index.scss"
 
 
 @inject("commonStore")
 @observer
+@withLogin()
 class Index extends Component {
 
   config = {
