@@ -6,6 +6,8 @@ import {View} from "@tarojs/components"
 import {observer, inject} from "@tarojs/mobx"
 import GGTabs from "@/components/common/tabs"
 import withLogin from '@/components/common/withLogin';
+import http from "@/service/http/index"
+import Url from "@/config/url/home"
 
 import "./index.scss"
 
@@ -36,7 +38,7 @@ class Index extends Component {
   }
 
   componentDidMount() {
-
+    this.getList();
   }
 
   componentWillUnmount() {
@@ -46,6 +48,21 @@ class Index extends Component {
   }
 
   componentDidHide() {
+  }
+
+  getList() {
+    const {current} = this.state
+    const params = {
+      gameType: current + 1
+    }
+    http({
+      url: Url.list,
+      method: "POST",
+      data: params,
+      success: (data) => {
+        console.log("data", data)
+      }
+    })
   }
 
   increment = () => {
@@ -62,6 +79,8 @@ class Index extends Component {
   chooseTab(index) {
     this.setState({
       current: index
+    }, () => {
+      this.getList()
     })
   }
 
@@ -70,8 +89,7 @@ class Index extends Component {
     const {tabHeads, current} = this.state
     return (
       <View className='home'>
-        <GGTabs tabHeads={tabHeads}
-                current={current} onClick={this.chooseTab.bind(this)}></GGTabs>
+        <GGTabs tabHeads={tabHeads} current={current} onClick={this.chooseTab.bind(this)}></GGTabs>
       </View>
     )
   }
