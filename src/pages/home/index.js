@@ -5,6 +5,7 @@ import Taro, {Component} from "@tarojs/taro"
 import {View} from "@tarojs/components"
 import {observer, inject} from "@tarojs/mobx"
 import GGTabs from "@/components/common/tabs"
+import GGTabsBody from "@/components/common/tabs/body"
 import http from "@/service/http/index"
 import Url from "@/config/url/home"
 
@@ -58,7 +59,7 @@ class Index extends Component {
       method: "POST",
       data: params,
       success: (data) => {
-        console.log("data", data)
+        // console.log("data", data)
       }
     })
   }
@@ -87,7 +88,11 @@ class Index extends Component {
     const {tabHeads, current} = this.state
     return (
       <View className='home'>
-        <GGTabs tabHeads={tabHeads} current={current} onClick={this.chooseTab.bind(this)}></GGTabs>
+        <GGTabs tabHeads={tabHeads} current={current} onClick={this.chooseTab.bind(this)}>
+          <GGTabsBody current={current} index={0}>111</GGTabsBody>
+          <GGTabsBody current={current} index={1}>222</GGTabsBody>
+          <GGTabsBody current={current} index={2}>333</GGTabsBody>
+        </GGTabs>
       </View>
     )
   }

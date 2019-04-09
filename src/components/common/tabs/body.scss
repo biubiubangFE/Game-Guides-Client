@@ -1,0 +1,16 @@
+$component: '.at-tabs-pane';
+.at-tabs-pane {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: initial;
+  /* modifiers */
+  &--active {
+    height: auto;
+  }
+
+  &--inactive {
+    height: 0;
+    overflow: hidden;
+  }
+}
