@@ -1,6 +1,10 @@
 $componentHead: '.tabs-head';
 $componentBody: '.tabs-body';
 
+.gg-tabs {
+  overflow: hidden;
+}
+
 #{$componentHead} {
   width: 100%;
   height: 100%;
@@ -30,4 +34,5 @@ $componentBody: '.tabs-body';
   transition: all 0.3s;
   will-change: transform, left, top;
   overflow: visible;
+  overflow-y: hidden;
 }

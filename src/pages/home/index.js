@@ -6,6 +6,7 @@ import {View} from "@tarojs/components"
 import {observer, inject} from "@tarojs/mobx"
 import GGTabs from "@/components/common/tabs"
 import GGTabsBody from "@/components/common/tabs/body"
+import GGList from "@/components/common/lists"
 import withLogin from '@/components/common/withLogin';
 import http from "@/service/http/index"
 import Url from "@/config/url/home"
@@ -91,7 +92,10 @@ class Index extends Component {
     return (
       <View className='home'>
         <GGTabs tabHeads={tabHeads} current={current} onClick={this.chooseTab.bind(this)}>
-          <GGTabsBody current={current} index={0}>111</GGTabsBody>
+          <GGTabsBody current={current} index={0}>
+            <GGList></GGList>
+            {/*111*/}
+          </GGTabsBody>
           <GGTabsBody current={current} index={1}>222</GGTabsBody>
           <GGTabsBody current={current} index={2}>333</GGTabsBody>
         </GGTabs>

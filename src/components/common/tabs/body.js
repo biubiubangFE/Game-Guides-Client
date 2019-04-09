@@ -21,7 +21,6 @@ export default class GGTabs extends Component {
 
   render() {
     const {
-      customStyle,
       className,
       index,
       current
