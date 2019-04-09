@@ -6,6 +6,7 @@ import {View} from "@tarojs/components"
 import {observer, inject} from "@tarojs/mobx"
 import GGTabs from "@/components/common/tabs"
 import GGTabsBody from "@/components/common/tabs/body"
+import withLogin from '@/components/common/withLogin';
 import http from "@/service/http/index"
 import Url from "@/config/url/home"
 
@@ -14,6 +15,7 @@ import "./index.scss"
 
 @inject("commonStore")
 @observer
+@withLogin('didShow')
 class Index extends Component {
 
   config = {
@@ -37,13 +39,13 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.getList();
   }
 
   componentWillUnmount() {
   }
 
   componentDidShow() {
+    this.getList();
   }
 
   componentDidHide() {

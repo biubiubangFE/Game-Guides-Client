@@ -3,6 +3,7 @@
  */
 import Taro from "@tarojs/taro"
 
+export const baseUrl = "https://api.mhdss.com/game-guides-service";
 /**
 * @author j_bleach 2019/3/21
 * @describe 拦截器
@@ -36,6 +37,8 @@ const http = function (params = {}) {
     complete
   })
     .then(res => success(res.data))
+    .catch(err => fail(err))
+    // .finally(complete)
 }
 
 export default http
