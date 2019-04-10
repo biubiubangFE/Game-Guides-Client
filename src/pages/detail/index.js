@@ -70,6 +70,19 @@ class Index extends Component {
     })
   }
 
+  getTimeInfo() {
+    let now = new Date().getHours();
+    let publishTime = new Date(this.state.data.publishTime).getHours();
+    let day = Math.floor((now - publishTime) / 24);
+    if (day === 0) {
+      return '今天';
+    } 
+    if (day >=7) {
+      return '一周前'
+    } 
+    return `${day}天前`
+  }
+
   render() {
     const {data} = this.state;
     if (!data) {
@@ -77,8 +90,21 @@ class Index extends Component {
     }
     return (
       <View className='detail'>
-        <View className="detail_title">
-          {data.title}
+        {
+          data.thumpPath 
+          ? <View className="detail_thump">
+              <image src={data.thumpPath}></image>
+              <View className="detail_thump_title">{data.title}</View>
+            </View>
+          : 
+          <View className="detail_title">
+            {data.title}
+          </View>
+        }
+        
+        <View className="detail_info">
+          <View className="detail_info_author">{data.author}</View>
+          <View className="detail_info_time">{this.getTimeInfo()}</View>
         </View>
         <View className="detail_content">
           <import src='../../components/wxParse/wxParse.wxml' />
