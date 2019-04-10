@@ -7,7 +7,7 @@ import {observer, inject} from "@tarojs/mobx"
 import GGTabs from "@/components/common/tabs"
 import GGTabsBody from "@/components/common/tabs/body"
 import GGList from "@/components/common/lists"
-import withLogin from '@/components/common/withLogin';
+import withLogin from "@/components/common/withLogin";
 import http from "@/service/http/index"
 import Url from "@/config/url/home"
 
@@ -16,7 +16,7 @@ import "./index.scss"
 
 @inject("commonStore")
 @observer
-@withLogin('didShow')
+@withLogin("didShow")
 class Index extends Component {
 
   config = {
@@ -29,7 +29,8 @@ class Index extends Component {
       {title: "绝地求生"},
       {title: "主机游戏"}
     ],
-    current: 0
+    current: 0,
+    lists: [1, 3, 4, 5, 6]
   }
 
   componentWillMount() {
@@ -88,12 +89,12 @@ class Index extends Component {
 
   render() {
     const {commonStore: {counter}} = this.props
-    const {tabHeads, current} = this.state
+    const {tabHeads, current, lists} = this.state
     return (
       <View className='home'>
         <GGTabs tabHeads={tabHeads} current={current} onClick={this.chooseTab.bind(this)}>
           <GGTabsBody current={current} index={0}>
-            <GGList></GGList>
+            <GGList lists={lists}></GGList>
             {/*111*/}
           </GGTabsBody>
           <GGTabsBody current={current} index={1}>222</GGTabsBody>

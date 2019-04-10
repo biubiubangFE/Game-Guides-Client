@@ -12,10 +12,14 @@ $componentBody: '.tabs-body';
   display: flex;
   flex-direction: row;
   &-item {
+    height: 6vh;
     text-align: center;
     background-color: #fff;
     flex: 1;
     font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   &-item-box {
     display: inline-block;
@@ -34,5 +38,4 @@ $componentBody: '.tabs-body';
   transition: all 0.3s;
   will-change: transform, left, top;
   overflow: visible;
-  overflow-y: hidden;
 }

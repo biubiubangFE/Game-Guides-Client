@@ -2,7 +2,7 @@
  * Created by j_bleach on 2019/4/9.
  */
 import Taro, {Component} from "@tarojs/taro"
-import {ScrollView, View} from "@tarojs/components"
+import {ScrollView, View, Text} from "@tarojs/components"
 import "./index.scss"
 
 export default class GGLists extends Component {
@@ -25,7 +25,15 @@ export default class GGLists extends Component {
   render() {
     const {lists} = this.props
     const listView = lists && lists.map(v => {
-        return <View></View>
+        return <View className='gg-lists-box' key={v}>
+          <View className='gg-lists-content'>
+            <View className='gg-lists-content-head'>
+              44222222222222222444555555
+            </View>
+            <View className='gg-lists-content-body'>444444444</View>
+          </View>
+          <View className='gg-lists-img'>244444441111</View>
+        </View>
       })
     return (
       <ScrollView
@@ -34,7 +42,7 @@ export default class GGLists extends Component {
         scrollWithAnimation
         enableBackToTop
         scrollTop='0'
-        style='height: 100vh;background-color:red'
+        style='height: 94vh;'
         onScrollToLower={this.onScrollLower}
       >
         {listView}

@@ -1,4 +1,27 @@
 $component: '.gg-lists';
 #{$component} {
-
+  &-box {
+    height: 13vh;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid green;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+  }
+  &-content {
+    width: 60vw;
+    border: 1px solid firebrick;
+    &-head {
+      width: 100%;
+      word-break: break-all;
+      background-color: #63a35c;
+    }
+  }
+  &-img {
+    width: 40vw;
+    border: 1px solid indigo;
+  }
 }
