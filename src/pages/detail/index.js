@@ -39,7 +39,7 @@ class Index extends Component {
   }
 
   componentDidShow() {
-    this.getDetail();
+    this.getDetail(283);
   }
 
   componentDidHide() {
@@ -52,9 +52,9 @@ class Index extends Component {
     }
   }
 
-  getDetail() {
+  getDetail(newsId) {
     const params = {
-      newsId: 283
+      newsId,
     }
     http({
       url: Url.get,
