@@ -1,0 +1,47 @@
+@import '../../components/wxParse/wxParse.wxss';
+
+.detail {
+    // padding: 0 20px 20px 20px;
+    &_thump {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        image {
+            width: 100%;
+            height: 400px;
+            vertical-align: bottom;
+        }
+        &_title {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            color: #ffffff;
+            padding: 0 20px 40px 20px;
+        }
+    }
+    &_title {
+        padding: 20px 20px;
+    }
+    &_info {
+        padding: 20px 20px;
+        &_author{
+            font-size: 24px;
+            display: inline-block;
+        }
+        &_time {
+            font-size: 18px;
+            display: inline-block;
+            margin: 0 10px;
+        }
+    }
+    &_content {
+        font-size: 30px;
+        overflow-x: hidden;
+        margin: 0 20px;
+    }
+    &_footer {
+        font-size: 24px;
+        padding: 20px 20px;
+    }
+}
