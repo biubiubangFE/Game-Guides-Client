@@ -1,0 +1,16 @@
+@import '../../components/wxParse/wxParse.wxss';
+
+.detail {
+    padding: 20px;
+    &_title {
+        padding: 40px 0;
+    }
+    &_content {
+        font-size: 30px;
+        overflow-x: hidden;
+    }
+    &_footer {
+        font-size: 24px;
+        padding: 8px 0;
+    }
+}

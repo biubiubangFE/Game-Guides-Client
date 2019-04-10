@@ -1,7 +1,7 @@
 import Taro, {Component} from "@tarojs/taro"
 import {Provider} from "@tarojs/mobx"
 
-import Index from "./pages/home/index"
+import Index from "./pages/detail/index"
 
 import stores from "@/store/index";
 
@@ -18,6 +18,7 @@ class App extends Component {
 
   config = {
     pages: [
+      "pages/detail/index",
       "pages/home/index",
       "pages/auth/index",
     ],
@@ -30,7 +31,7 @@ class App extends Component {
     tabBar: {
       list: [
         {
-          "pagePath": "pages/home/index",
+          "pagePath": "pages/detail/index",
           "text": "首页"
           // "iconPath": "assets/img/home.png",
           // "selectedIconPath": "assets/img/home-active.png",
