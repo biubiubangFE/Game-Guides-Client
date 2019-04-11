@@ -65,7 +65,7 @@ function withLogin(lifecycle = 'willMount') {
                 if (Taro.getStorageSync('sessionKey')) {
                     return true;
                 }
-                
+
                 // 登录wx后端
                 const wxLoginInfo = await Taro.login();
                 if (wxLoginInfo.code) {

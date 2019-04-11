@@ -30,6 +30,7 @@ class Index extends Component {
       {title: "主机游戏"}
     ],
     current: 0,
+    pageNo: 1,
     lists: [1, 3, 4, 5, 6]
   }
 
@@ -54,51 +55,69 @@ class Index extends Component {
   }
 
   getList() {
-    const {current} = this.state
+    const {current, pageNo} = this.state
     const params = {
-      gameType: current + 1
+      gameType: current + 1,
+      pageNo: pageNo
     }
     http({
       url: Url.list,
       method: "POST",
       data: params,
       success: (data) => {
-        // console.log("data", data)
+        console.log(11111, data)
+        this.setState({
+          lists: pageNo == 1
+            ? data.resultList
+            : this.state.lists.concat(data.resultList)
+        })
       }
     })
   }
 
-  increment = () => {
-    const {commonStore} = this.props
-    commonStore.increment()
-    console.log(commonStore)
-  }
-
-  decrement = () => {
-    const {commonStore} = this.props
-    commonStore.decrement()
-  }
+  // increment = () => {
+  //   const {commonStore} = this.props
+  //   commonStore.increment()
+  //   console.log(commonStore)
+  // }
+  //
+  // decrement = () => {
+  //   const {commonStore} = this.props
+  //   commonStore.decrement()
+  // }
 
   chooseTab(index) {
     this.setState({
-      current: index
+      current: index,
+      pageNo: 1
+    }, () => {
+      this.getList()
+    })
+  }
+
+  onScrollLower() {
+    this.setState({
+      pageNo: this.state.pageNo + 1
     }, () => {
       this.getList()
     })
   }
 
   render() {
-    const {commonStore: {counter}} = this.props
+    // const {commonStore: {counter}} = this.props
     const {tabHeads, current, lists} = this.state
     return (
       <View className='home'>
         <GGTabs tabHeads={tabHeads} current={current} onClick={this.chooseTab.bind(this)}>
           <GGTabsBody current={current} index={0}>
-            <GGList lists={lists}></GGList>
-            {/*111*/}
+            <GGList lists={lists} onScrollLower={this.onScrollLower.bind(this)}></GGList>
           </GGTabsBody>
-          <GGTabsBody current={current} index={1}>222</GGTabsBody>
-          <GGTabsBody current={current} index={2}>333</GGTabsBody>
+          <GGTabsBody current={current} index={1}>
+            <GGList lists={lists} onScrollLower={this.onScrollLower.bind(this)}></GGList>
+          </GGTabsBody>
+          <GGTabsBody current={current} index={2}>
+            <GGList lists={lists} onScrollLower={this.onScrollLower.bind(this)}></GGList>
+          </GGTabsBody>
         </GGTabs>
       </View>
     )
