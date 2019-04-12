@@ -6,6 +6,7 @@ import {ScrollView, View, Text, Image} from "@tarojs/components"
 import moment from "moment"
 // import {dateTransform} from "@/service/utils/index"
 import "./index.scss"
+import { formatImgSrc } from '../../../utils';
 
 export default class GGLists extends Component {
   static options = {
@@ -47,7 +48,7 @@ export default class GGLists extends Component {
             </View>
           </View>
           <View className='gg-lists-img'>
-            <Image style='height:13vh;width:100%' src={v.thumpPath}></Image>
+            <Image style='height:13vh;width:100%' src={formatImgSrc(v.thumpPath)}></Image>
           </View>
         </View>
       })

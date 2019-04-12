@@ -10,6 +10,7 @@ import Url from "@/config/url/detail"
 import WxParse from '../../components/wxParse/wxParse'
 
 import "./index.scss"
+import { formatImgSrc } from '../../utils';
 
 
 @inject("commonStore")
@@ -93,7 +94,7 @@ class Index extends Component {
         {
           data.thumpPath 
           ? <View className="detail_thump">
-              <image src={data.thumpPath}></image>
+              <image src={formatImgSrc(data.thumpPath)}></image>
               <View className="detail_thump_title">{data.title}</View>
             </View>
           : 
