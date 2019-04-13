@@ -3,13 +3,12 @@
  * 通过高阶组件的形式对需要的组件进行登录检查，并在需要的情况下进行自动登录
  */
 import Taro, { Component } from "@tarojs/taro"
-import regeneratorRuntime from '../../../assets/script/regenerator-runtime/runtime';
 
 const baseUrl = "https://api.mhdss.com/game-guides-service";
 
 const LIFE_CYCLES = ['willMount', 'didMount', 'didShow'];
 
-console.log(regeneratorRuntime);
+const regeneratorRuntime = require("@/assets/script/regenerator-runtime/runtime")
 
 function withLogin(lifecycle = 'willMount') {
 
