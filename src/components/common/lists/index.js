@@ -4,8 +4,8 @@
 import Taro, {Component} from "@tarojs/taro";
 import {ScrollView, View, Text, Image} from "@tarojs/components";
 import moment from "moment";
-// import {dateTransform} from "@/service/utils/index"
 import {formatImgSrc} from "@/service/utils/index";
+import GGLoading from "@/components/common/loading";
 import "./index.scss";
 
 export default class GGLists extends Component {
@@ -15,20 +15,48 @@ export default class GGLists extends Component {
 
   constructor() {
     super(...arguments);
+    this.state = {
+      loading: false
+    };
   }
 
   componentDidMount() {
   }
 
+  componentWillUpdate(nextProps) {
+    if (nextProps.lists.length != this.props.lists.length) {
+      this.setState({
+        loading: false
+      });
+    }
+    // console.log("nextProps", nextProps);
+    // console.log("nextState", nextState);
+  }
+
   onScrollLower() {
+    this.setState({
+      loading: true
+    });
     this.props.onScrollLower();
+  }
+
+  onScrollToUpper() {
+    this.props.onScrollToUpper();
+  }
+
+  navToDetail(id) {
+    console.log(id)
+    Taro.navigateTo({
+      url: `/pages/detail/index?newsId=${id}`
+    });
   }
 
   render() {
     const {lists} = this.props;
+    const {loading} = this.state;
     // console.log(lists.length)
     const listView = lists && lists.map(v => {
-      return <View className='gg-lists-box' key={v.newsId}>
+      return <View className='gg-lists-box' key={v.newsId} onClick={this.navToDetail.bind(this, v.newsId)}>
         <View className='gg-lists-content'>
           <View className='gg-lists-content-head'>
             {v.title}
@@ -61,8 +89,10 @@ export default class GGLists extends Component {
         scrollTop='0'
         style='height: 94vh;'
         onScrollToLower={this.onScrollLower}
+        onScrollToUpper={this.onScrollToUpper}
       >
         {listView}
+        {loading && <GGLoading></GGLoading>}
       </ScrollView>
     );
   }

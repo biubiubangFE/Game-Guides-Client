@@ -7,10 +7,9 @@ import { observer, inject } from "@tarojs/mobx"
 import withLogin from '@/components/common/withLogin';
 import http from "@/service/http/index"
 import Url from "@/config/url/detail"
+import {formatImgSrc} from "@/service/utils/index";
 import WxParse from '../../components/wxParse/wxParse'
-
 import "./index.scss"
-import { formatImgSrc } from '../../utils';
 
 
 @inject("commonStore")
@@ -39,7 +38,8 @@ class Index extends Component {
   componentWillUnmount() {
   }
 
-  componentDidShow() {
+  componentDidShow(options) {
+    console.log(options)
     this.getDetail(283);
   }
 
@@ -77,10 +77,10 @@ class Index extends Component {
     let day = Math.floor((now - publishTime) / 24);
     if (day === 0) {
       return '今天';
-    } 
+    }
     if (day >=7) {
       return '一周前'
-    } 
+    }
     return `${day}天前`
   }
 
@@ -92,17 +92,17 @@ class Index extends Component {
     return (
       <View className='detail'>
         {
-          data.thumpPath 
+          data.thumpPath
           ? <View className="detail_thump">
               <image src={formatImgSrc(data.thumpPath)}></image>
               <View className="detail_thump_title">{data.title}</View>
             </View>
-          : 
+          :
           <View className="detail_title">
             {data.title}
           </View>
         }
-        
+
         <View className="detail_info">
           <View className="detail_info_author">{data.author}</View>
           <View className="detail_info_time">{this.getTimeInfo()}</View>
@@ -118,5 +118,5 @@ class Index extends Component {
           )
         }
       }
-      
+
       export default Index

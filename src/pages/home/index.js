@@ -59,7 +59,11 @@ class Index extends Component {
   }
 
   async initList() {
+    Taro.showLoading({
+      title: "loading..."
+    });
     await this.getList("One", 1);
+    Taro.hideLoading();
     await this.getList("Two", 2);
     await this.getList("Three", 3);
   }
@@ -72,17 +76,19 @@ class Index extends Component {
       gameType: curr || current + 1,
       pageNo: pageNum
     };
+
     return new Promise((res) => {
       http({
         url: Url.list,
         method: "POST",
         data: params,
         success: (data) => {
-          console.log(55555);
           this.setState({
             [listType]: pageNum == 1
               ? data.resultList
               : this.state[listType].concat(data.resultList)
+          }, () => {
+
           });
           res();
         }
@@ -102,14 +108,27 @@ class Index extends Component {
   // }
 
   chooseTab(index) {
+    Taro.hideLoading();
     this.setState({
       current: index,
       // pageNo: 1
     });
   }
 
-  onScrollLower(index) {
+  onScrollToUpper(index) {
+    Taro.showLoading({
+      title: "刷新中..."
+    });
     console.log(index);
+    this.setState({
+      [`pageNo${index}`]: 1
+    }, async () => {
+      await this.getList(index);
+      Taro.hideLoading();
+    });
+  }
+
+  onScrollLower(index) {
     this.setState({
       [`pageNo${index}`]: this.state[`pageNo${index}`] + 1
     }, () => {
@@ -124,13 +143,16 @@ class Index extends Component {
       <View className='home'>
         <GGTabs tabHeads={tabHeads} current={current} onClick={this.chooseTab.bind(this)}>
           <GGTabsBody current={current} index={0}>
-            <GGList lists={listsOne} onScrollLower={this.onScrollLower.bind(this, "One")}></GGList>
+            <GGList lists={listsOne} onScrollToUpper={this.onScrollToUpper.bind(this, "One")}
+                    onScrollLower={this.onScrollLower.bind(this, "One")}></GGList>
           </GGTabsBody>
           <GGTabsBody current={current} index={1}>
-            <GGList lists={listsTwo} onScrollLower={this.onScrollLower.bind(this, "Two")}></GGList>
+            <GGList lists={listsTwo} onScrollToUpper={this.onScrollToUpper.bind(this, "Two")}
+                    onScrollLower={this.onScrollLower.bind(this, "Two")}></GGList>
           </GGTabsBody>
           <GGTabsBody current={current} index={2}>
-            <GGList lists={listsThree} onScrollLower={this.onScrollLower.bind(this, "Three")}></GGList>
+            <GGList lists={listsThree} onScrollToUpper={this.onScrollToUpper.bind(this, "Three")}
+                    onScrollLower={this.onScrollLower.bind(this, "Three")}></GGList>
           </GGTabsBody>
         </GGTabs>
       </View>
