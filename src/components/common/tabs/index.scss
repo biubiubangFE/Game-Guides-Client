@@ -26,8 +26,17 @@ $componentBody: '.tabs-body';
     padding: 10px;
   }
   &-item-line-active {
-    border-bottom: 6px solid #0d1e20;
     font-weight: 600;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 0;
+      height: 4px;
+      background: #0d1e20;
+    }
   }
 }
 
