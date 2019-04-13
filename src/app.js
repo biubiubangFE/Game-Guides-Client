@@ -37,7 +37,7 @@ class App extends Component {
           // "selectedIconPath": "assets/img/home-active.png",
         },
         {
-          "pagePath": "pages/home/index",
+          "pagePath": "pages/detail/index",
           "text": "游戏"
           // "iconPath": "assets/img/home.png",
           // "selectedIconPath": "assets/img/home-active.png",
