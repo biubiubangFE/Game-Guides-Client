@@ -38,9 +38,8 @@ class Index extends Component {
   componentWillUnmount() {
   }
 
-  componentDidShow(options) {
-    console.log(options)
-    this.getDetail(283);
+  componentDidShow() {
+    this.getDetail(this.$router.params.newsId);
   }
 
   componentDidHide() {
