@@ -61,8 +61,7 @@ class Index extends Component {
       url: Url.get,
       method: "POST",
       data: params,
-      success: (data) => {
-        let article = data.data;
+      success: (article) => {
         this.setState({
           data: article,
         });
@@ -112,7 +111,7 @@ class Index extends Component {
           <template is='wxParse' data='{{wxParseData:article.nodes}}'/>
         </View>
         <View className="detail_footer">
-           <Label>作者: {data.author}</Label>
+           <Label>文章来源于网络，如果侵权请告知删除</Label>
         </View>
       </View>
           )
